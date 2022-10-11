@@ -1,32 +1,31 @@
-class ApiCarrito {
+class Carrito {
     constructor(){
         this.productosCarrito = [];
-        this.id = 0
+        this.id = 0 
     }
 
+    newCart(){
+        
+    }   
+
     findProduct(id){
-        const product = this.productos.find((product) => product.id == id);
+        const product = this.productosCarrito.find((product) => product.id == id);
         return product
     }
 
     allProducts(){
-        return[...this.products]
-    }
-
-    newCart(product){
-        const newProd = {...product, id: ++this.id};
-        this.productos.push(newProd)
+        return[...this.productosCarrito]
     }
 
     deleteById(id){
-        const findId = this.productos.findIndex(p => p.id === id);
-        this.productos.splice(findId,1)
+        const findId = this.productosCarrito.findIndex(p => p.id === id);
+        this.productosCarrito.splice(findId,1)
     }
 
-    deleteAll(){
-        this.productos = []
+    deleteCart(){
+        this.productosCarrito = []
     }
 
 }
 
-module.exports = ApiCarrito
+module.exports = Carrito
