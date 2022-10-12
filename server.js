@@ -10,9 +10,9 @@ app.use(express.urlencoded({extended:true}))
 
 app.use('/api/productos',routerProduct);
 
-app.listen(4040, err =>{
+app.listen(4000, err =>{
     if(err) throw new err   
-    console.log('Server listening on port 8080')
+    console.log('Server listening on port 4000')
 })
 
 

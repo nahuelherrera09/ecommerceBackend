@@ -10,7 +10,7 @@ class ApiProductos {
     }
 
     allProducts(){
-        return[...this.products]
+        return[...this.productos]
     }
 
     saveProduct(product){
