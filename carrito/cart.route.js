@@ -1,10 +1,10 @@
 const { Router } = require('express')
 const Cart = require('../models/cart')
-const Container = require('../controllers/Container')
+const Contenedor = require('../controllers/Container')
 
 const routerCart = Router()
-const controller = new Container
-const controllerProd = new Container(product)
+const controller = new Contenedor('cart.txt')
+const controllerProd = new Contenedor('product.txt')
 
 
 routerCart.post('/',(req,res)=>{

@@ -3,13 +3,13 @@ const fs = require('fs');
 
 class Contenedor{
     constructor(rutaArchivo){
-        this.rutaArchivo = `${__dirname}/db/${rutaArchivo}.json`
+        this.rutaArchivo = `${__dirname}/db/${rutaArchivo}`
     }
 
     async #leerArchivo(){
         try{
         const contenido = await fs.promises.readFile(this.rutaArchivo,'utf-8');
-        const constenidoParseado = JSON.parse(contenido);
+        const constenidoParseado = await JSON.parse(contenido);
         return constenidoParseado;
         //console.log(contenidoParseado)
         } catch (err){
@@ -20,28 +20,33 @@ class Contenedor{
         }
 
         async save(obj){ // guarda un objeto en el archivo, devuelve el id asignado
-            const contenidoArchivo =  await this.#leerArchivo()
-            if (contenidoArchivo.length !== 0) {
-                console.log(contenidoArchivo)
-                await fs.promises.writeFile(this.rutaArchivo, JSON.stringify([...contenidoArchivo, {...obj, id: contenidoArchivo[contenidoArchivo.length - 1].id + 1}], null, 2), 'utf-8')
-            } else {            
-                await fs.promises.writeFile(this.rutaArchivo, JSON.stringify( [ {...obj, id: 1} ]), 'utf-8')
+            try{
+                const contenidoArchivo =  await this.#leerArchivo()
+                if (contenidoArchivo.length !== 0) {
+                    console.log(contenidoArchivo)
+                    await fs.promises.writeFile(this.rutaArchivo, JSON.stringify([...contenidoArchivo, {...obj, id: contenidoArchivo[contenidoArchivo.length - 1].id + 1}], null, 2), 'utf-8')
+                } else {            
+                    await fs.promises.writeFile(this.rutaArchivo, JSON.stringify( [ {...obj, id: 1} ]), 'utf-8')
+                }
+            }catch(err){
+                console.log(err)
             }
+           
     
         }
     
 
     async getById(id){
-        const contenidoArchivo = await this.#leerArchivo()
-          
-                const idObj =  await contenidoArchivo.find(e => e.id === id )
-                if(idObj == undefined){
-                    console.log(null)
-                    //return null
-                }else{
-                    console.log(idObj);
-                }
-           
+        try{
+            const contenidoArchivo = await this.#leerArchivo()
+                    const producto =  contenidoArchivo.find(e => e.id === id )
+                    if(producto){
+                       return producto
+                    }else{
+                        console.log('no se encontro el producto');
+                    }
+               
+        }catch(err){console.log(err)}
         }
 
     async update(el){
@@ -63,9 +68,9 @@ class Contenedor{
 
 
 
-    async getAll(){
+     getAll(){
         try{
-            const content = await this.#leerArchivo()
+            const content =  this.#leerArchivo()
             if(content.length){
                 return content
             }else{return null}

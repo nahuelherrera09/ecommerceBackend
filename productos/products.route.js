@@ -1,18 +1,19 @@
 const express = require('express');
-const Container = require('../controllers/Container.js');
+const Contenedor = require('../controllers/Container.js');
 const { Router } = express;
 
 const Product = require('../models/products')
-const controller = new Container('product')
+const controller = new Contenedor('product.txt')
 
 const routerProduct = Router();
 
 routerProduct.get('/',(req,res)=>{
-    res.json(controller.allProducts())
+    res.json(controller.getAll())
 } )
 
 routerProduct.get('/:id',(req,res)=>{
-    res.json(controller.findProduct(req.params.id))
+    let { id } = req.params 
+    res.json(controller.getById(id))
 })
 
 routerProduct.delete('/:id',(req,res)=>{

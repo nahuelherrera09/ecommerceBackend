@@ -1,0 +1,122 @@
+[
+  {
+    "timestamp": "13/10/2022 17:15:19",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 1
+  },
+  {
+    "timestamp": "13/10/2022 17:15:19",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 2
+  },
+  {
+    "timestamp": "13/10/2022 17:15:20",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 3
+  },
+  {
+    "timestamp": "13/10/2022 17:15:20",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 4
+  },
+  {
+    "timestamp": "13/10/2022 17:15:21",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 5
+  },
+  {
+    "timestamp": "13/10/2022 17:15:24",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 6
+  },
+  {
+    "timestamp": "13/10/2022 17:15:24",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 7
+  },
+  {
+    "timestamp": "13/10/2022 17:15:25",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 8
+  },
+  {
+    "timestamp": "13/10/2022 17:15:25",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 9
+  },
+  {
+    "timestamp": "13/10/2022 17:15:25",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 10
+  },
+  {
+    "timestamp": "13/10/2022 17:15:25",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 11
+  },
+  {
+    "timestamp": "13/10/2022 17:15:25",
+    "name": "notebook",
+    "description": "computadora",
+    "code": 3222434,
+    "pic": "picture",
+    "price": 3232,
+    "stock": 40,
+    "id": 12
+  }
+]
