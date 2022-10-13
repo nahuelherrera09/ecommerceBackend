@@ -1,29 +1,33 @@
 const express = require('express');
-const ApiProductos = require('./apiProducts');
+const Container = require('../controllers/Container.js');
 const { Router } = express;
 
-const products = new ApiProductos()
+const Product = require('../models/products')
+const controller = new Container('product')
 
 const routerProduct = Router();
 
 routerProduct.get('/',(req,res)=>{
-    res.json(products.allProducts())
+    res.json(controller.allProducts())
 } )
 
 routerProduct.get('/:id',(req,res)=>{
-    res.json(products.findProduct(req.params.id))
+    res.json(controller.findProduct(req.params.id))
 })
 
 routerProduct.delete('/:id',(req,res)=>{
-    res.json(products.deleteById(req.params.id))
+    let { id } = req.params
+    res.json(controller.deleteById(id))
 })
 
 routerProduct.post('/',(req,res)=>{
-    res.json(products.saveProduct(req.body))
+    let body = req.body
+    let product = new Product(body.name,body.description,body.code,body.pic,body.price,body.stock)
+    res.json(controller.save(product))
 })
 
 routerProduct.delete('/',(req,res)=>{
-    res.json(products.deleteAll())
+    res.json(controller.deleteAll())
 } )
 
 module.exports = routerProduct
