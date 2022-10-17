@@ -12,16 +12,21 @@ routerCart.post('/',(req,res)=>{
     res.json(controller.save(cart))
 })
 
-
-    routerCart.get('/:id',async(req,res)=>{
-    let { id } = req.params 
-    const cartId = await controller.getById(id)
-    res.json(cartId)
+routerCart.get('/',async(req,res)=>{
+    const allCarts = await controller.getAll()
+    res.json(allCarts)
 })
 
-routerCart.delete('/:id', (req,res)=>{
+routerCart.get('/:id',async(req,res)=>{
+let { id } = req.params 
+const cartId = await controller.getById(id)
+res.json(cartId)
+})
+
+routerCart.delete('/:id', async (req,res)=>{
     let { id } = req.params
-    res.json(controller.deleteById(id))
+    let deletedItem = await controller.deleteById(id)
+    res.json(`item ${deletedItem} eliminado`)
 })
 
 routerCart.get('/:id/products',(req,res)=>{

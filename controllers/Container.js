@@ -39,11 +39,11 @@ class Contenedor{
     async getById(id){
         try{
             const contenidoArchivo = await this.#leerArchivo()
-                    const producto =  contenidoArchivo.find(e => e.id === id )
-                    if(producto){
-                       return producto
-                    }else{
-                        console.log('no se encontro el producto');
+            const producto = await contenidoArchivo.find(e => e.id == id )
+                if(producto){
+                    return producto
+                }else{
+                    console.log('no se encontro el producto');
                     }
                
         }catch(err){console.log(err)}
@@ -71,10 +71,10 @@ class Contenedor{
 
 
 
-     getAll(){
+    async getAll(){
         try{
-            const content =  this.#leerArchivo()
-            if(content){
+            const content =  await this.#leerArchivo()
+            if(content.length){
                 return content
             }else{return []}
         }catch(err){
@@ -83,14 +83,20 @@ class Contenedor{
         
     }
     async deleteById(id){
-        const contenidoArchivo =  await this.#leerArchivo()
-        const findId = await contenidoArchivo.findIndex(e => e.id === id);
-        await contenidoArchivo.splice(findId,1)
-        await fs.promises.writeFile(this.rutaArchivo, JSON.stringify([{...contenidoArchivo}],null,2),'utf-8')
-        
-        //console.log(contenidoArchivo)
-
-      
+        try{
+            const contenidoArchivo =  await this.#leerArchivo()
+            const findId = await contenidoArchivo.findIndex(e => e.id == id);
+            console.log(findId)
+            if(findId != -1){
+                await contenidoArchivo.splice(findId,1)
+                await fs.promises.writeFile(this.rutaArchivo, JSON.stringify([{...contenidoArchivo}],null,2),'utf-8')
+                console.log(contenidoArchivo)
+            }
+            
+        } catch(err){
+            console.log(err)
+        }
+        //console.log(contenidoArchivo) 
 
     }
     async deleteAll(){
