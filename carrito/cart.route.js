@@ -12,6 +12,13 @@ routerCart.post('/',(req,res)=>{
     res.json(controller.save(cart))
 })
 
+
+    routerCart.get('/:id',async(req,res)=>{
+    let { id } = req.params 
+    const cartId = await controller.getById(id)
+    res.json(cartId)
+})
+
 routerCart.delete('/:id', (req,res)=>{
     let { id } = req.params
     res.json(controller.deleteById(id))
@@ -29,18 +36,9 @@ routerCart.get('/:id/products',(req,res)=>{
     }
 })
 
-routerCart.post('/:id/products',(req,res)=>{
-    let { id } = req.params
-    let cart = controller.getById(id)
-    let body = req.body.id_prod
-
-    let products = body.forEach(id_prod => {
-        let prod = controllerProd.getById(id_prod)
-        cart.products.push(prod)     
-    });
-    let response = controller.update(cart)
-    res.json( { response: 'Products added', cart: response } )
-})
+// routerCart.put('/:id/products',(req,res)=>{
+//     let {id, products} = req.params
+// })
 
 routerCart.delete('/:id/products/:id_prod',(req,res)=>{
     let {id, id_prod} = req.params

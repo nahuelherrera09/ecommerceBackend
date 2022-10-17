@@ -10,14 +10,13 @@
     "id": 1
   },
   {
-    "timestamp": "13/10/2022 17:15:19",
-    "name": "notebook",
-    "description": "computadora",
+    "id": 2,
+    "name": "Mouse gamer ",
+    "description": "mouse",
     "code": 3222434,
     "pic": "picture",
     "price": 3232,
-    "stock": 40,
-    "id": 2
+    "stock": 40
   },
   {
     "timestamp": "13/10/2022 17:15:20",

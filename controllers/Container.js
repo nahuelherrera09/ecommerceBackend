@@ -22,7 +22,7 @@ class Contenedor{
         async save(obj){ // guarda un objeto en el archivo, devuelve el id asignado
             try{
                 const contenidoArchivo =  await this.#leerArchivo()
-                if (contenidoArchivo.length !== 0) {
+                if (contenidoArchivo) {
                     console.log(contenidoArchivo)
                     await fs.promises.writeFile(this.rutaArchivo, JSON.stringify([...contenidoArchivo, {...obj, id: contenidoArchivo[contenidoArchivo.length - 1].id + 1}], null, 2), 'utf-8')
                 } else {            
@@ -50,19 +50,22 @@ class Contenedor{
         }
 
     async update(el){
-        let contenidoArchivo = await this.#leerArchivo()
-        let one = await contenidoArchivo.find(e => e.id == el.id)
-        let newEl = {...one,...contenidoArchivo}
-
-        let index = contenidoArchivo.findIndex((el,ind)=>{
-            if(el.id == newEl.id){
-                return true
+          try{
+            const contenidoArchivo = await this.getAll()
+            const index = contenidoArchivo.findIndex(e => e.id == el.id)
+            if(index == -1){
+                throw new Error(`Error. No se encontro el id ${id}`)
+            }else{
+                contenidoArchivo[index] = el;
+                try{
+                    await fs.promises.writeFile(this.rutaArchivo, JSON.stringify(contenidoArchivo,null,2))
+                }catch(err){
+                    throw new Error(`Error al actualizar: ${err}`)          
+                }
             }
-        })
-        contenidoArchivo[index] = newEl
-
-        fs.promises.writeFile(this.rutaArchivo,JSON.stringify(contenidoArchivo,null,'\t'))
-        return({ response: 'updated', el: newEl })
+          } catch(err){
+            console.log(err)
+          } 
     }    
 
 
@@ -71,9 +74,9 @@ class Contenedor{
      getAll(){
         try{
             const content =  this.#leerArchivo()
-            if(content.length){
+            if(content){
                 return content
-            }else{return null}
+            }else{return []}
         }catch(err){
             console.log(err)    
         }
@@ -107,6 +110,26 @@ class Contenedor{
         }
     } 
 
+
+    // async addToCart(id, id_prod){
+    //     try{
+    //         const prod = this.getById(id_prod)
+    //         try{
+    //             this.rutaArchivo = 'cart.txt' 
+    //             const contenidoArchivo =  await this.#leerArchivo()
+    //             if(contenidoArchivo.id){
+    //                 contenidoArchivo.push(prod)
+    //             }
+
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+
+    // }
 }
 
 module.exports = Contenedor

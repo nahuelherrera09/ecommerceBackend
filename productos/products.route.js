@@ -7,13 +7,15 @@ const controller = new Contenedor('product.txt')
 
 const routerProduct = Router();
 
-routerProduct.get('/',(req,res)=>{
-    res.json(controller.getAll())
+routerProduct.get('/',async(req,res)=>{
+    const allProds = await controller.getAll()
+    res.json(allProds)
 } )
 
-routerProduct.get('/:id',(req,res)=>{
+routerProduct.get('/:id',async(req,res)=>{
     let { id } = req.params 
-    res.json(controller.getById(id))
+    const prodId = await controller.getById(id)
+    res.json(prodId)
 })
 
 routerProduct.delete('/:id',(req,res)=>{
@@ -25,6 +27,13 @@ routerProduct.post('/',(req,res)=>{
     let body = req.body
     let product = new Product(body.name,body.description,body.code,body.pic,body.price,body.stock)
     res.json(controller.save(product))
+})
+
+routerProduct.put('/:id',async(req,res)=>{
+    const id = parseInt(req.params.id)
+    const { name,description,code,pic,price,stock } = req.body
+    const product = await controller.update({id, name,description,code,pic,price,stock})
+    res.json(product)
 })
 
 routerProduct.delete('/',(req,res)=>{

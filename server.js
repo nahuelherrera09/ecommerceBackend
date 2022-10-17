@@ -3,7 +3,7 @@ const routerCart = require('./carrito/cart.route.js');
 
 const routerProduct = require('./productos/products.route.js');
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4040
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use('/api/cart', routerCart)
 
 app.listen(PORT, err =>{
     if(err) throw new err   
-    console.log('Server listening on port 3000')
+    console.log('Server listening on port 4040')
 })
 
 
