@@ -116,6 +116,17 @@ class Contenedor{
         }
     } 
 
+    async addToCart(id){
+        try{
+            let contenidoArchivo = await this.#leerArchivo()
+            let findId = contenidoArchivo.find(e => e.id == id)
+                
+
+        }catch(err){
+            throw new Error('No se pudo agregar el producto al carrito')
+        }
+    }
+
 
     // async addToCart(id, id_prod){
     //     try{
