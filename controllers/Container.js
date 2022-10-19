@@ -36,18 +36,30 @@ class Contenedor{
         }
     
 
-    async getById(id){
-        try{
-            const contenidoArchivo = await this.#leerArchivo()
-            const producto = await contenidoArchivo.find(e => e.id == id )
-                if(producto){
-                    return producto
-                }else{
-                    console.log('no se encontro el producto');
-                    }
+    // async getById(id){
+    //     try{
+    //         const contenidoArchivo = await this.#leerArchivo()
+    //         const producto = await contenidoArchivo.find(e => e.id == id )
+    //             if(producto){
+    //                 return producto
+    //             }else{
+    //                 console.log('no se encontro el producto');
+    //                 }
                
-        }catch(err){console.log(err)}
+    //     }catch(err){console.log(err)}
+    //     }
+
+    async getById(id){
+        try {
+            const carts = await this.getAll()
+            console.log(carts)
+            let foundById = carts.find(cart => cart.id == id)
+            return foundById
+        }catch(err){
+            throw new Error
         }
+    }
+    
 
     async update(el){
           try{
@@ -116,16 +128,7 @@ class Contenedor{
         }
     } 
 
-    async addToCart(id){
-        try{
-            let contenidoArchivo = await this.#leerArchivo()
-            let findId = contenidoArchivo.find(e => e.id == id)
-                
 
-        }catch(err){
-            throw new Error('No se pudo agregar el producto al carrito')
-        }
-    }
 
 
     // async addToCart(id, id_prod){

@@ -1,6 +1,6 @@
 [
-  {
-    "0": {
+  
+    {
       "timestamp": "18/10/2022 00:14:37",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -10,7 +10,7 @@
       "stock": 32321,
       "id": 1
     },
-    "1": {
+    {
       "timestamp": "18/10/2022 00:14:41",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -20,7 +20,7 @@
       "stock": 32321,
       "id": 2
     },
-    "2": {
+    {
       "timestamp": "18/10/2022 00:14:45",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -30,7 +30,7 @@
       "stock": 32321,
       "id": 3
     },
-    "3": {
+    {
       "timestamp": "18/10/2022 00:14:46",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -40,7 +40,7 @@
       "stock": 32321,
       "id": 4
     },
-    "4": {
+    {
       "timestamp": "18/10/2022 00:14:47",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -50,7 +50,7 @@
       "stock": 32321,
       "id": 6
     },
-    "5": {
+    {
       "timestamp": "18/10/2022 00:14:47",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -60,7 +60,7 @@
       "stock": 32321,
       "id": 7
     },
-    "6": {
+    {
       "timestamp": "18/10/2022 00:14:48",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -70,7 +70,7 @@
       "stock": 32321,
       "id": 8
     },
-    "7": {
+    {
       "timestamp": "18/10/2022 00:14:48",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -80,7 +80,7 @@
       "stock": 32321,
       "id": 9
     },
-    "8": {
+    {
       "timestamp": "18/10/2022 00:14:49",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -90,7 +90,7 @@
       "stock": 32321,
       "id": 10
     },
-    "9": {
+    {
       "timestamp": "18/10/2022 00:14:49",
       "name": "PC Gamer",
       "description": "Pc gamer 32 ram nvidia 4560450534",
@@ -100,5 +100,5 @@
       "stock": 32321,
       "id": 11
     }
-  }
+  
 ]

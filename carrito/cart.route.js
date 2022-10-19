@@ -1,4 +1,4 @@
-const { Router } = require('express')
+const { Router, response } = require('express')
 const Cart = require('../models/cart')
 const Contenedor = require('../controllers/Container')
 
@@ -41,18 +41,21 @@ routerCart.get('/:id/products',(req,res)=>{
     }
 })
 
-// routerCart.post(':id/productos', async(req,res) =>{
-//     let { id } = req.params
-//     let cart = await controller.getById(id)
-//     console.log(cart)
-//     let body = req.body.id_prod
+routerCart.post(':id/productos', async(req,res) =>{
+    let { id } = req.params
+    let cart = await controller.getById(id)
+    console.log(cart)
+    let body = req.body.id_prod
 
-//     let products = body.forEach(id_prod => {
-//     let prod = controllerProd.getById(id_prod)
-//         cart.products.push(prod)
-//     });
+    let products = body.forEach(id_prod => {
+    let prod = controllerProd.getById(id_prod)
+        cart.products.push(prod)
+    })
 
-// })
+    let response = controller.update(cart)
+    res.json({Respnse: "actualizado", cart:response})
+
+})
 
 
 // routerCart.put('/:id/products',(req,res)=>{
