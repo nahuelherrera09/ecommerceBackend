@@ -41,19 +41,30 @@ routerCart.get('/:id/products',(req,res)=>{
     }
 })
 
-routerCart.post(':id/productos', async(req,res) =>{
-    let { id } = req.params
+
+routerCart.delete('/:id/productos/:id_prod', async (req, res) => {
+	let { id, id_prod } = req.params
     let cart = await controller.getById(id)
-    console.log(cart)
-    let body = req.body.id_prod
 
-    let products = body.forEach(id_prod => {
-    let prod = controllerProd.getById(id_prod)
-        cart.products.push(prod)
-    })
+	let index = await cart.products.findIndex((el, ind) => {
+		if(el.id == id_prod) { return true }
+	})	
 
-    let response = controller.update(cart)
-    res.json({Respnse: "actualizado", cart:response})
+	let newProducts = await cart.products.filter((prod, ind) => prod.id != id_prod)
+	cart.products = newProducts
+	let response = await controller.update(cart)
+	res.json({ response: 'Product Deleted from Cart', cart: response })
+})
+
+routerCart.post('/:id/productos', async(req,res) =>{
+
+
+    const carrito = await controller.getById(req.params.id)
+    const producto = await controllerProd.getById(req.body.id)
+    carrito.products.push(producto)
+    const compra = await controller.update(carrito, req.params.id)
+    res.status(200).send(compra)
+
 
 })
 

@@ -26,7 +26,38 @@
   },
   {
     "timestamp": "18/10/2022 00:15:05",
-    "products": [],
+    "products": [
+      {
+        "timestamp": "18/10/2022 00:14:47",
+        "name": "PC Gamer",
+        "description": "Pc gamer 32 ram nvidia 4560450534",
+        "code": 3434,
+        "pic": "sddasasd.com",
+        "price": 34324,
+        "stock": 32321,
+        "id": 7
+      },
+      {
+        "timestamp": "18/10/2022 00:14:47",
+        "name": "PC Gamer",
+        "description": "Pc gamer 32 ram nvidia 4560450534",
+        "code": 3434,
+        "pic": "sddasasd.com",
+        "price": 34324,
+        "stock": 32321,
+        "id": 7
+      },
+      {
+        "timestamp": "18/10/2022 00:14:47",
+        "name": "PC Gamer",
+        "description": "Pc gamer 32 ram nvidia 4560450534",
+        "code": 3434,
+        "pic": "sddasasd.com",
+        "price": 34324,
+        "stock": 32321,
+        "id": 7
+      }
+    ],
     "id": 7
   },
   {

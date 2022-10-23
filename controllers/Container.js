@@ -62,23 +62,25 @@ class Contenedor{
     
 
     async update(el){
-          try{
-            const contenidoArchivo = await this.getAll()
-            const index = contenidoArchivo.findIndex(e => e.id == el.id)
-            if(index == -1){
-                throw new Error(`Error. No se encontro el id ${id}`)
-            }else{
-                contenidoArchivo[index] = el;
-                try{
-                    await fs.promises.writeFile(this.rutaArchivo, JSON.stringify(contenidoArchivo,null,2))
-                }catch(err){
-                    throw new Error(`Error al actualizar: ${err}`)          
-                }
-            }
-          } catch(err){
-            console.log(err)
-          } 
-    }    
+        try{
+          const contenidoArchivo = await this.getAll()
+          const index = contenidoArchivo.findIndex(e => e.id == el.id)
+          if(index == -1){
+              throw new Error(`Error. No se encontro el id ${id}`)
+          }else{
+              contenidoArchivo[index] = el;
+              try{
+                  await fs.promises.writeFile(this.rutaArchivo, JSON.stringify(contenidoArchivo,null,2))
+              }catch(err){
+                  throw new Error(`Error al actualizar: ${err}`)          
+              }
+          }
+        } catch(err){
+          console.log(err)
+        } 
+  }       
+
+
 
 
 
